@@ -15,6 +15,7 @@ A standalone Mac application that provides an interactive, user-friendly interfa
 - 🖱️ **One-click setup** - Just double-click the app
 - 🎯 **Universal compatibility** - Works with any local development setup
 - 💬 **Interactive prompts** - Guides you through configuration
+- 🌐 **Custom domains** - Use your ngrok custom domains or enter them manually
 - ✅ **Input validation** - Ensures valid URLs and ports
 - 🛡️ **Safe execution** - No accidental commands or misconfigurations
 - 📱 **Professional interface** - Clean terminal presentation
@@ -62,6 +63,14 @@ Public URL: https://abc123.ngrok-free.app
 
 Your local site is now accessible at:
   🌐 https://abc123.ngrok-free.app
+
+🎛️  Tunnel Management Commands
+==============================
+Stop tunnel:     simple-ngrok.sh stop
+Check status:    simple-ngrok.sh status
+List tunnels:    simple-ngrok.sh list
+Restart tunnel:  simple-ngrok.sh restart
+Show help:       simple-ngrok.sh help
 ```
 
 ## 🚀 Quick Start
@@ -100,6 +109,142 @@ cd simple-ngrok
 ```
 
 _Note: On first run, macOS may ask for permission to run the app. Click "Open" to proceed._
+
+## 🎛️ Tunnel Management
+
+Simple ngrok includes powerful tunnel management commands for easy control:
+
+### Available Commands
+
+```bash
+# Start a new tunnel (interactive setup)
+./simple-ngrok.sh
+./simple-ngrok.sh start
+
+# Stop the current tunnel
+./simple-ngrok.sh stop
+
+# Check tunnel status and info
+./simple-ngrok.sh status
+
+# List all active tunnels
+./simple-ngrok.sh list
+
+# Restart the current tunnel
+./simple-ngrok.sh restart
+
+# Show help and available commands
+./simple-ngrok.sh help
+```
+
+### Management Examples
+
+**Quick Status Check:**
+
+```bash
+./simple-ngrok.sh status
+```
+
+Shows current tunnel status, project info, and public URL.
+
+**Stop Tunnel Properly:**
+
+```bash
+./simple-ngrok.sh stop
+```
+
+Much better than remembering PID numbers!
+
+**List All Tunnels:**
+
+```bash
+./simple-ngrok.sh list
+```
+
+See all active ngrok tunnels and their mappings.
+
+**Restart After Changes:**
+
+```bash
+./simple-ngrok.sh restart
+```
+
+Quickly restart tunnel with same configuration.
+
+## 🌐 Custom Domains
+
+Simple ngrok supports using your custom ngrok domains for professional, SSL-enabled tunnels:
+
+### Domain Selection Options
+
+When starting a tunnel, you'll be prompted with:
+
+1. **Random ngrok URL** (default) - Gets a random URL like `abc123.ngrok-free.app`
+2. **Manual domain entry** - Enter your custom domain manually
+3. **Auto-detected domains** - If API access is configured, shows your domains automatically
+
+### Manual Domain Entry
+
+Perfect for when you have a custom domain but auto-detection doesn't work:
+
+```
+ngrok Domain Selection
+=====================
+
+Available options:
+  1. Use random ngrok URL (default)
+  2. Enter custom domain manually
+
+Select option [1]: 2
+
+Enter your custom domain:
+Examples:
+  • hardy-centrally-boxer.ngrok-free.app
+  • mysite.ngrok.io
+  • custom-domain.ngrok-free.app
+
+Domain: hardy-centrally-boxer.ngrok-free.app
+✓ Using custom domain: hardy-centrally-boxer.ngrok-free.app
+```
+
+### Benefits of Custom Domains
+
+- 🎯 **Consistent URLs** - Same domain every time you start a tunnel
+- 👩‍💼 **Professional appearance** - Use branded domains instead of random ones
+- 🔒 **Proper SSL (paid domains only)** - Paid custom domains have trusted SSL certificates
+- 🆓 **Free option available** - ngrok provides 1 free custom domain per account
+
+### Important SSL Notes
+
+**Free ngrok domains**:
+
+**HSTS Enforced Domains** (*.ngrok-free.app, *.ngrok-free.dev):
+- ❌ Browsers force HTTPS (HSTS preload list)
+- ❌ Self-signed certificates cause unavoidable SSL warnings
+- ⚠️ HTTP requests automatically redirect to HTTPS
+
+**Non-HSTS Domains** (*.ngrok-free.pizza):
+- ✅ Allow HTTP access without SSL warnings
+- ✅ Provide consistent URLs
+- 💡 Best choice for development with .local domains
+
+**Paid custom domains** (*.ngrok.io, *.ngrok.app, *.ngrok.dev):
+- ✅ Have proper SSL certificates (no warnings)
+- ✅ Professional HTTPS URLs
+- ✅ Perfect for production-like testing
+
+### Recommendation for Local by Flywheel
+
+For the best experience with Local by Flywheel and .local domains:
+1. **Claim a .pizza domain** - Allows HTTP without SSL warnings
+2. **Or upgrade to paid plan** - Get proper SSL certificates
+3. **Avoid .app/.dev free domains** - HSTS makes SSL warnings unavoidable
+
+### Getting Your Free Domain
+
+1. Visit [ngrok dashboard](https://dashboard.ngrok.com/cloud-edge/domains)
+2. Claim your free custom domain
+3. Use it with Simple ngrok's manual entry option
 
 ## 🛠️ Usage Examples
 
@@ -180,10 +325,17 @@ To build the Mac app from source:
 Test the script directly:
 
 ```bash
-# Run the script directly
+# Run the script directly (interactive setup)
 ./src/simple-ngrok.sh
 
-# Test with arguments
+# Test with help command
+./src/simple-ngrok.sh help
+
+# Test tunnel management
+./src/simple-ngrok.sh status
+./src/simple-ngrok.sh stop
+
+# Test with arguments (if implementing CLI args)
 ./src/simple-ngrok.sh --url localhost --port 3000 --name "Test Project"
 ```
 
