@@ -34,8 +34,7 @@ tell application "Terminal"
     activate
     set script_path to (path to me as string)
     set posix_path to POSIX path of script_path
-    set script_dir to (do shell script "dirname " & quoted form of posix_path)
-    set full_script_path to script_dir & "/simple-ngrok.sh"
+    set full_script_path to posix_path & "Contents/Resources/simple-ngrok.sh"
     do script "clear && echo \"🚀 Simple ngrok\" && echo \"===============\" && echo \"\" && " & quoted form of full_script_path & " && echo \"\" && echo \"✅ You can close this Terminal window when done.\""
 end tell'
 
