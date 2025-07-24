@@ -8,8 +8,6 @@
 
 A standalone Mac application that provides an interactive, user-friendly interface for creating ngrok tunnels for any local development project. No terminal commands to remember, no configuration files to edit.
 
-![Simple ngrok Demo](https://via.placeholder.com/600x400/0066cc/ffffff?text=Simple+ngrok+Demo)
-
 ## ✨ Features
 
 - 🖱️ **One-click setup** - Just double-click the app
@@ -88,14 +86,6 @@ Show help:       simple-ngrok.sh help
    ```
 
 ### Installation
-
-#### Option 1: Download Release (Recommended)
-
-1. **Download** the latest `Simple ngrok.app` from [Releases](../../releases)
-2. **Move** the app to your Desktop or Applications folder
-3. **Double-click** to run!
-
-#### Option 2: Build from Source
 
 ```bash
 # Clone the repository
